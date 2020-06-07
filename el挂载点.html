@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el挂载点</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+       <h1>{{ message }}</h1> 
+        <h2>姓名:{{ people.name }} </br>电话:{{ people.mobile }}</h2>
+        <h2>喜欢城市:{{ arr[0] }} {{ arr[1] }} {{ arr[2] }}</h2>
+    </div>
+    <script>
+            var app = new Vue({
+             el: '#app',
+             data: {
+                 message: 'Hello Vue!',
+                 people:{
+                     name:"小兰",
+                     mobile:"400-500-600"
+                 },
+                 arr:["北京","上海","山东"]
+
+             }
+          })
+     </script>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        v-on 为元素绑定事件 
+        2.html结构
+    -->
+    <div id="app">
+        <input type="button" value="v-on指令" v-on:click="doIt"></input>
+        <input type="button" value="v-on@简写" @click="doIt"></input>
+        <input type="button" value="双击事件" v-on:dblclick="dbClick"></input>
+        <input type="button" value="@双击简写" @dblclick="dbClick"></input>
+
+        <h2 @click="changeFood">{{ food }}</h2>
+    </div>
+
+    <!-- 1.开发环境版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+       //3.创建VUE示例
+       var app = new Vue({
+           el:"#app",
+           data:{              //渲染写在data中
+            food:"鱼香肉丝盖饭",
+           },
+           methods:{     //方法写在methods中
+               doIt:function(){
+                   alert("v-on指令");
+               },
+               dbClick:function(){
+                  alert("双击事件")
+               },
+               changeFood:function(){
+                   this.food+="好好吃！！"     //this
+               }
+           }
+       })
+
+
+    </script>
+</body>
+</html>
