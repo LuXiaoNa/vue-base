@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 
+        v-bind指令的作用：为元素绑定属性（比如：src,title,class）
+        完整写法是vbind:属性名
+        简写的可直接省略v-bind，只保留 :属性名
+        需要动态的增删class建议使用对象的方式
+    
+    -->
+    <style>
+        .active{
+            border:1px solid red
+        }
+    </style>
+    <div id="app">
+         <img v-bind:src="imgSrc" width="200px" height="150px" alt="">
+         <br>
+         <p>点击下面图片显示样式设置,使用三元表达式设置</p>
+         <img :src="imgSrc" width="200px" height="150px" alt=""  :title="imgtitle+'!!!'" :class="isActive?'active':''" @click="toggleActive">
+         <br>
+         <p>点击下面图片显示样式设置,使用{active:isActive}即对象的方式设置</p>
+         <img :src="imgSrc" width="200px" height="150px" alt=""  :title="imgtitle+'!!!'" :class="{active:isActive}" @click="toggleActive">
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgSrc:"./img/img1.jfif",
+                imgtitle:"程序员",
+                isActive:false,
+
+            },
+            methods:{
+                toggleActive:function(){
+                     this.isActive = !this.isActive
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+#center{
+    width: 800px;
+    height: 700px;
+}
+#title{
+    width: 100px;
+    height: 80px;
+    margin-left: 40%;
+    color:red;
+}

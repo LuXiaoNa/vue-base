@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for指令</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <!-- 
+        v-for指令的作用是：根据数据生成列表结构
+        数组经常和v-for结合使用
+        语法是(item,index) in 数据
+        item和index可以结合其他指令使用
+        数组长度的更新会同步到页面上，是响应式的
+      -->
+    <div id="app">
+          <ul>
+              <li  v-for="(item1,index) in arr">
+                  {{index+1}}程序猿:{{item1}}
+              </li>
+          </ul>
+          <input type="button" value="添加数据" @click="add">
+          <input type="button" value="移除数据" @click="sub">
+          <h2 v-for="item2 in vegetables" :title="item2.name">
+              {{item2.name}}
+          </h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                arr:["北京","上海","广东","深圳"],
+                vegetables:[
+                    {name:"鱼香肉丝盖饭"},
+                    {name:"西红柿炒鸡蛋"},
+                ]
+            },
+            methods:{
+                add:function(){
+                  this.vegetables.push({name:"土豆丝盖饭"});
+                },
+                sub:function(){
+                    this.vegetables.shift();
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

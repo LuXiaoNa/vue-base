@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <!-- 
+         频繁切换使用v-show,反之使用v-if，v-if直接操作Dom树，v-show操作样式 
+         v-if指令的作用是：根据表达式的真假切换元素的显示状态
+         本质是通过操纵dom元素来切换显示状态
+         表达式的值为true，元素存在于dom树中，为false从dom树中移除
+    -->
+    <div id="app">
+        <input type="button" value="切换显示" @click="toggleIsShow">
+        <p v-if="isShow">这是个P标签，v-if修饰</p>
+        <p v-show="isShow">这是个P标签,v-show修饰</p>
+        <h2 v-vif="temperture>=35">热死了</h2>
+    </div>
+    <script>
+       var app = new Vue({
+           el:"#app",
+           data:{
+            isShow:false,
+            temperture:40,
+           },
+           methods:{
+            toggleIsShow:function(){
+                this.isShow = !this.isShow
+            }
+           }
+       })
+    </script>
+</body>
+</html>

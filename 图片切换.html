@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="mask">
+        <div>
+            <h2 style="text-align: center;color:red">
+              程序员的相关图片
+            </h2>
+            <!-- 左箭头 -->
+             <a href="javascript:void(0)" @click="prev" class="left">  <!-- v-show="index!=0"可设置隐藏  -->
+                <img src="img/left.jpg" style="width:50px;height: 50px;margin-left: 30%;" alt="呀，网跑了" />
+            </a>
+            <!-- 图片 -->
+            <img :src="imgArr[index]" style="width:500px;height: 400px;" alt="呀，网跑了" />
+            
+             <!-- 右箭头 -->
+             <a href="javascript:void(0)" @click="next" class="right">    <!--   v-show="index<imgArr.length-1"可设置隐藏 -->
+                <img src="img/right.jpg" style="width:50px;height: 50px;" alt="呀，网跑了" />
+            </a>
+        </div> 
+    </div>
+    <script>
+        var app = new Vue({
+             el:"#mask",
+             data:{
+                 imgArr:[
+                     "./img/img1.jfif",
+                     "./img/img2.jfif",
+                     "./img/img3.jpg",
+                     "./img/img4.jfif",
+                     "./img/img5.jfif",
+                     "./img/img6.jfif",
+                     "./img/img7.jfif",
+                     "./img/img8.jfif",
+                     "./img/img9.jfif",
+                     "./img/img10.jfif",
+                     "./img/img11.jpg",
+                 ],
+                 index:0
+             },
+             methods:{
+                 prev:function(){
+                    this.index-- 
+                    if(this.index==0){
+                        alert("哎呀，到头了没有了")
+                     }
+                     
+                 },
+                 next:function(){
+                     this.index++  
+                     if(this.index==11){
+                        alert("哎呀，到头了没有了")
+                     }
+                    
+                }
+             }
+        })
+    </script>
+</body>
+</html>
