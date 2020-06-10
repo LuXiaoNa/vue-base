@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        <!-- 3.使用组件 -->
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h2>当前计数:{{count}}</h2>
+           <button @click='add'>+</button>
+           <button @click='sub'>-</button>
+        </div>
+      </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+       //1. 注册一个全局组件
+        Vue.component('cpn',{
+            template:"#cpn",
+            data(){       // data是一个带返回值的函数,是为了分别控制各自的变化,确保互不影响，不是函数的话会报错     
+            return{
+                count:0,  
+            }
+        },
+        methods:{        
+            sub:function(){
+              if(this.count>0){
+                this.count--   //this获取data中的数据
+              }else{
+                  alert("别点了，最小了")
+              }
+              
+            },
+            add:function(){
+                if(this.count<10){
+                    this.count++
+                }else{
+                    alert("别点了，最大了")
+                }
+               
+            }
+        }
+        })
+        
+        var app = new Vue({
+            el:"#app"
+            
+        })
+    </script>
+</body>
+</html>
